@@ -3,12 +3,54 @@
 # Signal 클래스는 1초에 한번 돌아감
 # 중간에 사람이 나가면 대기시간 0초로 변경
 
+#point In Poligon 알고리즘으로 영역 판별
+"""
+def pointInPoligon(now, arr):  # 영역안에 있다면 true, else false
+
+    cnt = 0
+
+    for i in range(len(now)):
+
+        x = now[i][0]
+        y = now[i][1]
+
+        crosses = 0
+
+        for i in range(len(arr)):
+            elem1 = arr[i]
+            elem2 = arr[(i+1)%len(arr)]
+
+            if(elem1[1] <= y <= elem2[1]):
+                atX = (elem2[0]- elem1[0])*(elem2[1]-elem1[1])/(elem2[1]-elem1[1])+elem1[0];
+                if(x < atX):
+                    crosses+=1
+
+        if(crosses%2 == 1):
+            cnt+=1
+        
+    return cnt
+
+
+def is_people_in(current_signal, xy, cross_upper,cross_lower, wait_upper, wait_lower):
+    if current_signal == 0:
+        arr = cross_upper + list(reversed(cross_lower[1:-1]))
+    else:
+        arr = wait_upper + list(reversed(wait_lower[1:-1]))
+
+    output = pointInPoligon(xy, arr)
+    
+    signal_string = 'RED' if current_signal == 0 else 'GREEN'
+    place_string = '신호대기 영역' if current_signal == 0 else '횡단보도 영역'
+    print("[{}]{}: {}명 탐지".format(signal_string, place_string, output))
+
+    return output
 def Search(x, arr):
     for i in range(1, len(arr)):
         if arr[i - 1][0] <= x <= arr[i][0]:
             return i - 1, i
     return -1, -1
 
+"""
 
 def Check(x, y, point1, point2, isDown):
     x1 = point1[0]
