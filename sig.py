@@ -44,13 +44,13 @@ def is_people_in(current_signal, xy, cross_upper,cross_lower, wait_upper, wait_l
     print("[{}]{}: {}명 탐지".format(signal_string, place_string, output))
 
     return output
+    
+"""
 def Search(x, arr):
     for i in range(1, len(arr)):
         if arr[i - 1][0] <= x <= arr[i][0]:
             return i - 1, i
     return -1, -1
-
-"""
 
 def Check(x, y, point1, point2, isDown):
     x1 = point1[0]
