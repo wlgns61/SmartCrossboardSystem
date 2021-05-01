@@ -130,6 +130,7 @@ class Signal:
     def get_signal(self):
         return self.signal
 
+
     def get_remain_time(self):
         return self.remain_time
 
